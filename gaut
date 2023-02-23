@@ -1,0 +1,21 @@
+import requests
+from bs4 import BeautifulSoup
+
+# Mot recherché
+mot = "exemples"
+
+# URL de la page Web à consulter
+url = "https://www.example.com"
+
+# Récupérer le contenu de la page Web
+response = requests.get(url)
+content = response.content
+
+# Analyser le contenu de la page Web avec Beautiful Soup
+soup = BeautifulSoup(content, "html.parser")
+
+# Trouver tous les éléments contenant le mot recherché
+resultats = soup.find_all(text=lambda text: text and mot in text.lower())
+
+# Afficher les résultats
+print(resultats)
